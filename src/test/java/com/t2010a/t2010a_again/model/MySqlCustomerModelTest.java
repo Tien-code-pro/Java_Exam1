@@ -42,7 +42,7 @@ class MySqlCustomerModelTest {
         Customer customer = model.findById("A02");
         assertEquals("so2",customer.getName());
         Customer customer1 = model.findById("A03");
-        assertEquals("so3",customer.getName());
+        assertEquals("so3",customer1.getName());
     }
 
     @Test
