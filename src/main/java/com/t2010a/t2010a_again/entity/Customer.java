@@ -1,5 +1,7 @@
 package com.t2010a.t2010a_again.entity;
 
+import com.t2010a.t2010a_again.util.DateTimeHelper;
+
 import java.time.LocalDateTime;
 
 public class Customer {
@@ -33,6 +35,10 @@ public class Customer {
         this.status = 1;
     }
     public Customer(){
+        this.id = "";
+        this.name = "";
+        this.phone = "";
+        this.image = "";
     }
 
     @Override
@@ -111,5 +117,11 @@ public class Customer {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+    public String getDobString(){
+        if (this.dob != null){
+            return DateTimeHelper.convertLocalDateTimeToString(this.dob);
+        }
+        return "";
     }
 }

@@ -30,4 +30,44 @@
         <url-pattern>/register</url-pattern>
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateCustomer</servlet-name>
+        <servlet-class>com.t2010a.t2010a_again.controller.CreateCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCustomer</servlet-name>
+        <url-pattern>/admin/customers/create</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ListCustomer</servlet-name>
+        <servlet-class>com.t2010a.t2010a_again.controller.ListCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListCustomer</servlet-name>
+        <url-pattern>/admin/customers/list</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditCustomer</servlet-name>
+        <servlet-class>com.t2010a.t2010a_again.controller.EditCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditCustomer</servlet-name>
+        <url-pattern>/admin/customers/edit</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DetailCustomer</servlet-name>
+        <servlet-class>com.t2010a.t2010a_again.controller.DetailCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailCustomer</servlet-name>
+        <url-pattern>/admin/customers/detail</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteCustomer</servlet-name>
+        <servlet-class>com.t2010a.t2010a_again.controller.DeleteCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomer</servlet-name>
+        <url-pattern>/admin/customers/delete</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -5,19 +5,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionHelper {
-    public static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/t2010-jdbc-demo";
-    public static final String USERNAME = "root";
-    public static final String PASSWORD = "";
-    public static Connection connection;
 
-    public static Connection getConnection() {
+    private static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/t2010-jdbc-demo";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
+    private static Connection connection;
+    public static Connection getConnection(){
         try {
-            if (connection == null || connection.isClosed()){
-                connection = DriverManager.getConnection(CONNECTION_STRING,USERNAME,PASSWORD);
+            if(connection == null || connection.isClosed()){
+                Class.forName("com.mysql.jdbc.Driver");
+                connection = DriverManager.getConnection(CONNECTION_STRING, USERNAME, PASSWORD);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;
     }
 }
+
