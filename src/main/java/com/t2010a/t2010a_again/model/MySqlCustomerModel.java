@@ -20,7 +20,7 @@ public class MySqlCustomerModel implements CustomerModel{
             String sqlQuery = "insert into customers " +
                     "(id,name,phone,image,dob,createdAt,updatedAt,status)" +
                     "values " +
-                    "?,?,?,?,?,?,?,?";
+                    "(?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,customer.getId());
             preparedStatement.setString(2,customer.getName());
@@ -74,10 +74,10 @@ public class MySqlCustomerModel implements CustomerModel{
             Connection connection = ConnectionHelper.getConnection();
             String sqlQuery = "select * from customers where status = ? and id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-            preparedStatement.setInt(1,1);
-            preparedStatement.setString(1,id);
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setString(2, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 String name = resultSet.getString("name");
                 String phone = resultSet.getString("phone");
                 String image = resultSet.getString("image");
@@ -87,7 +87,7 @@ public class MySqlCustomerModel implements CustomerModel{
                 int status = resultSet.getInt("status");
                 customer = new Customer(id,name,phone,image,dob,createdAt,updatedAt,status);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return customer;
@@ -122,10 +122,10 @@ public class MySqlCustomerModel implements CustomerModel{
     public boolean delete(String id) {
         try {
             Connection connection = ConnectionHelper.getConnection();
-            String sqlQuery = "update customers" +
+            String sqlQuery = "update customers " +
                     "set status = ? where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-            preparedStatement.setInt(1,1);
+            preparedStatement.setInt(1,-1);
             preparedStatement.setString(2,id);
             System.out.println("Connection success!");
             preparedStatement.execute();

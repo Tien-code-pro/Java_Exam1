@@ -14,7 +14,7 @@ class MySqlCustomerModelTest {
     CustomerModel model;
     @BeforeEach
     void setUp() {
-        model = new InMemoryCustomerModel();
+        model = new MySqlCustomerModel();
     }
 
     @Test
@@ -39,25 +39,25 @@ class MySqlCustomerModelTest {
 
     @Test
     void findById() {
-        Customer customer = model.findById("A02");
-        assertEquals("so2",customer.getName());
-        Customer customer1 = model.findById("A03");
-        assertEquals("so3",customer1.getName());
+        Customer customer = model.findById("A01");
+        assertEquals("So01",customer.getName());
+        Customer customer1 = model.findById("A01");
+        assertEquals("So01",customer1.getName());
     }
 
     @Test
     void update() {
-        Customer customer = model.findById("A02");
-        customer.setName("updateName l2 :))");
-        model.update("A02",customer);
-        Customer newUpdateCustomer = model.findById("A02");
-        assertEquals("updateName l2 :))",customer.getName());
+        Customer customer = model.findById("A01");
+        customer.setName("updateName l33 :))");
+        model.update("A01",customer);
+        Customer newUpdateCustomer = model.findById("A01");
+        assertEquals("updateName l33 :))",newUpdateCustomer.getName());
     }
 
     @Test
     void delete() {
-        model.delete("A02");
-        Customer customer = model.findById("A02");
+        model.delete("5");
+        Customer customer = model.findById("5");
         assertEquals(null,customer);
     }
 }
